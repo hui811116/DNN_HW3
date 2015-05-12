@@ -1,2 +1,5 @@
-# MLDS_HW3
-2015 MLDS @ NTU
+RNN project
+---
+Requirement:
+	1. CUDA GPU Toolkit
+	2. Eigen Package
