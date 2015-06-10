@@ -1,4 +1,4 @@
-DATA=/home/hui/project/model/
+DATA=/home/hui/model/
 TYPE=fbank/
 TRAIN=${DATA}train/train_norm.svm
 TEST=${DATA}test/test_norm.svm

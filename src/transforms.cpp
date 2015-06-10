@@ -25,9 +25,19 @@ Transforms::Transforms(const mat& w,const mat& b){
 	assert(w.getRows()==r);
 	_w.resize(w.getRows(),w.getCols()+1);
 	MatrixXf* wptr=_w.getData();
-	wptr->block(0,0,w.getRows(),w.getCols())=*w.getData();
-	wptr->block(w.getCols(),0,b.getRows(),1)=*b.getData();
-	_pw.resize(_w.getRows(),_w.getCols(),0);
+	MatrixXf temp(w.getRows(),w.getCols()+1);
+	temp.block(0,0,w.getRows(),w.getCols())=*w.getData();
+	temp.block(0,w.getCols(),b.getRows(),1)=*b.getData();
+	mat tmp(temp);
+	_w=tmp;
+/*
+	cout<<"_W: "<<_w.getRows()<<" "<<_w.getCols()<<endl;
+	cout<<"w: "<<w.getRows()<<" "<<w.getCols()<<endl;
+*/
+//	wptr->block(0,0,w.getRows(),w.getCols())=(*w.getData());
+//	cout<<"_b:"<<b.getRows()<<" "<<b.getCols()<<endl;
+//	wptr->block(w.getCols(),0,b.getRows(),1)=(*b.getData());
+	_pw.resize(_w.getRows(),_w.getCols()+1,0);
 }
 
 Transforms::Transforms(size_t inputdim,size_t outputdim,float range){
